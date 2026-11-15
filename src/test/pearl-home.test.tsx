@@ -2,6 +2,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { describe, expect, it } from "vitest";
 import { routeTree } from "@/routeTree.gen";
+import { Route as HomeRoute } from "@/routes/index";
 
 describe("Pearl Dental Clinic home page", () => {
   it("renders the real clinic home page on /", () => {
@@ -9,7 +10,7 @@ describe("Pearl Dental Clinic home page", () => {
     const home = router.matchRoutes("/").at(-1);
 
     expect(home?.routeId).not.toBe("__root__");
-    expect(home?.options.head?.({} as never)).toEqual(
+    expect(HomeRoute.options.head?.({} as never)).toEqual(
       expect.objectContaining({
         meta: expect.arrayContaining([
           expect.objectContaining({ title: "Pearl Dental Clinic | A little more at ease" }),
